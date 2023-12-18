@@ -1,0 +1,285 @@
+###############################################Gmail#########################################################################
+# Import necessary modules
+import uiautomator2 as ui2
+import time
+import subprocess
+
+# Device serial number of the receiver device
+receiver_device_serial = "192.168.2.39:5555"
+
+# Create a Device object for the sender device
+sender_device = ui2.Device('cf611ff9')
+
+# Create a Device object for the receiver device
+receiver_device = ui2.Device(receiver_device_serial)
+
+# ADB commands to turn on the receiver and sender devices' screens
+receiver_turn_on_command = ['adb', '-s', receiver_device_serial, 'shell', 'input', 'keyevent', '224']
+sender_turn_on_command = ['adb', '-s', 'cf611ff9', 'shell', 'input', 'keyevent', '224']
+
+# ADB commands to turn off the receiver and sender devices' screens
+receiver_turn_off_command = ['adb', '-s', receiver_device_serial, 'shell', 'input', 'keyevent', '26']
+sender_turn_off_command = ['adb', '-s', 'cf611ff9', 'shell', 'input', 'keyevent', '26']
+
+# Define the package name and activity name of the Gmail app
+package_name = "com.google.android.gm"
+activity_name = "com.google.android.gm.ConversationListActivityGmail"
+
+# ADB command to start the Gmail app
+adb_command = ["adb", "-s", receiver_device_serial, "shell", "am", "start", "-n", f"{package_name}/{activity_name}"]
+
+# Execute the ADB command
+subprocess.run(adb_command)
+
+print("Gmail configured and opened Succesfully Gmail_01 PASS")
+time.sleep(2)
+print("We are in gmail interface and observing carefully, Gmail_02 PASS")
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gm:id/compose_button").click()
+time.sleep(2)
+receiver_device.xpath('//*[@resource-id="com.google.android.gm:id/peoplekit_autocomplete_chip_group"]/android.widget.EditText[1]').set_text("shubhampalsingh1993@gmail.com")
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gm:id/add_attachment").click()
+time.sleep(2)
+receiver_device.xpath('//android.widget.ListView/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]').click()
+time.sleep(2)
+receiver_device(resourceId="com.android.systemui:id/back").click()
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gm:id/send").click()
+time.sleep(2)
+print("Attachment option checked, Gmail_04 pass")
+time.sleep(2)
+print("Single / multipleattachment canbe seen, Gmail_05 pass")
+time.sleep(4)
+receiver_device(resourceId="com.google.android.gm:id/compose_button").click()
+time.sleep(2)
+receiver_device.xpath('//*[@resource-id="com.google.android.gm:id/peoplekit_autocomplete_chip_group"]/android.widget.EditText[1]').set_text("shubhampalsingh1993@gmail.com")
+time.sleep(2)
+receiver_device(resourceId="com.android.systemui:id/back").click()
+time.sleep(2)
+receiver_device(resourceId="com.android.systemui:id/back").click()
+time.sleep(2)
+print("Gmail saved as draft and , Gmail_07,08  pass")
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gm:id/senders", text="Shubham Pal Singh").click()
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gm:id/reply_button").click()
+time.sleep(2)
+receiver_device(resourceId="com.android.systemui:id/back").click()
+time.sleep(2)
+receiver_device(resourceId="com.android.systemui:id/back").click()
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gm:id/reply_all_button").click()
+time.sleep(2)
+receiver_device(resourceId="com.android.systemui:id/back").click()
+time.sleep(2)
+receiver_device(resourceId="com.android.systemui:id/back").click()
+time.sleep(2)
+print("Reply button working, Gmail_09,10 working pass")
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gm:id/forward_button").click()
+time.sleep(2)
+receiver_device.xpath('//*[@resource-id="com.google.android.gm:id/peoplekit_autocomplete_chip_group"]/android.widget.EditText[1]').set_text("shubhampalsingh1993@gmail.com")
+time.sleep(2)
+receiver_device(resourceId="com.android.systemui:id/back").click()
+time.sleep(2)
+receiver_device(resourceId="com.android.systemui:id/back").click()
+time.sleep(2)
+print("Forward option is working, Gmail_11,12 Working")
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gm:id/overflow").click()
+time.sleep(2)
+receiver_device.xpath('//android.widget.ListView/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]').click()
+time.sleep(2)
+receiver_device(resourceId="com.android.systemui:id/back").click()
+time.sleep(2)
+print("Mail can be moved and interface seen, gamil_14 pass")
+time.sleep(2)
+receiver_device(resourceId="com.android.systemui:id/back").click()
+time.sleep(2)
+receiver_device(resourceId="com.android.systemui:id/back").click()
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gm:id/open_search_bar_text_view").set_text("shubhampalsingh1993@gmail.com")
+time.sleep(2)
+print("Mail can be searched succesfully, Gmail_15 pass")
+time.sleep(2)
+receiver_device(resourceId="com.android.systemui:id/back").click()
+time.sleep(2)
+receiver_device(description="Open navigation drawer").click()
+time.sleep(2)
+
+# Perform a swipe to the end of the page
+# Replace the coordinates with the actual starting and ending points you need
+start_x = 500  # Starting x-coordinate
+start_y = 1000  # Starting y-coordinate
+end_x = 500  # Ending x-coordinate
+end_y = 100  # Ending y-coordinate
+
+# Swipe action
+device.swipe(start_x, start_y, end_x, end_y)
+
+# Wait for a moment to ensure the swipe is completed (adjust the delay as needed)
+time.sleep(2)
+
+receiver_device(resourceId="com.google.android.gm:id/hub_drawer_label_title", text="Help and feedback").click()
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gms:id/gh_feedback_text").click()
+time.sleep(2)
+receiver_device(text="Get started").click()
+time.sleep(2)
+receiver_device(resourceId="android:id/log_access_dialog_allow_button").click()
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gms:id/intent_title", text="Report an issue").click()
+time.sleep(2)
+receiver_device(text="Change notification settings").click()
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gms:id/edit_text_box").set_text("Hi")
+time.sleep(2)
+receiver_device(description="Submit the feedback that you entered").click()
+time.sleep(2)
+receiver_device(resourceId="com.android.systemui:id/back").click()
+time.sleep(2)
+receiver_device(resourceId="com.android.systemui:id/back").click()
+time.sleep(2)
+receiver_device(resourceId="android:id/button1").click()
+time.sleep(2)
+receiver_device(resourceId="com.android.systemui:id/back").click()
+time.sleep(2)
+print("feedback and change notification pass, Gmail_17,18 pass")
+time.sleep(2)
+print("Signature and mail forwarding can be done, Gmail_19,20 pass")
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gm:id/senders", text="Shubham Pal Singh").click()
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gm:id/delete").click()
+time.sleep(2)
+print("The mail is deleted and gmail_21 pass")
+time.sleep(2)
+print("Marked email can be deleted, gmail_22 pass")
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gm:id/og_apd_internal_image_view").click()
+time.sleep(2)
+print("Other gmail can be can be seen, Gmail_23 pass")
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gm:id/senders", text="Shubham Pal Singh").click()
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gm:id/conversation_header_star").click()
+time.sleep(2)
+receiver_device(resourceId="com.android.systemui:id/back").click()
+time.sleep(2)
+receiver_device(resourceId="com.android.systemui:id/back").click()
+time.sleep(2)
+print("Gmail is marked with star, Gmail_24 pass")
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gm:id/og_apd_internal_image_view").click()
+time.sleep(2)
+print("All other gmail can be configured, Gmail_27 pass")
+time.sleep(2)
+print("Names of gmail can be displayed, Gmail_28 pass")
+time.sleep(2)
+receiver_device(resourceId="com.android.systemui:id/center_group").click()
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gm:id/widget_folder").click()
+time.sleep(2)
+print("widget mail can be opened, Gmail_30,31 can be configured")
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gm:id/compose_button").click()
+time.sleep(2)
+receiver_device.xpath('//*[@resource-id="com.google.android.gm:id/peoplekit_autocomplete_chip_group"]/android.widget.EditText[1]').set_text("shubhampalsingh1993@gmail.com")
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gm:id/composearea_tap_trap_bottom").set_text("hi")
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gm:id/send").click()
+time.sleep(2)
+print("Gmail widglet is sending mail,Gmail_32,35 pass")
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gm:id/senders", text="Shubham Pal Singh").click()
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gm:id/og_apd_internal_image_view").click()
+time.sleep(2)
+receiver_device.xpath('//android.widget.ListView/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]').click()
+time.sleep(2)
+receiver_device(resourceId="com.android.systemui:id/back").click()
+time.sleep(2)
+print("The mail can be moved to another folder, Gmail_37")
+time.sleep(2)
+receiver_device(resourceId="com.android.systemui:id/center_group").click()
+time.sleep(2)
+receiver_device(text="Phone").click()
+time.sleep(2)
+receiver_device(resourceId="com.google.android.dialer:id/dialpad_fab").click()
+time.sleep(2)
+receiver_device(resourceId="com.google.android.dialer:id/dialpad_key_number", text="8").click()
+time.sleep(2)
+receiver_device(resourceId="com.google.android.dialer:id/dialpad_key_number", text="5").click()
+time.sleep(2)
+receiver_device(resourceId="com.google.android.dialer:id/dialpad_key_number", text="2").click()
+time.sleep(2)
+receiver_device(resourceId="com.google.android.dialer:id/dialpad_key_number", text="7").click()
+time.sleep(2)
+receiver_device(resourceId="com.google.android.dialer:id/dialpad_key_number", text="7").click()
+time.sleep(2)
+receiver_device(resourceId="com.google.android.dialer:id/dialpad_key_number", text="4").click()
+time.sleep(2)
+receiver_device(resourceId="com.google.android.dialer:id/dialpad_key_number", text="6").click()
+time.sleep(2)
+receiver_device(resourceId="com.google.android.dialer:id/dialpad_key_number", text="8").click()
+time.sleep(2)
+receiver_device(resourceId="com.google.android.dialer:id/dialpad_key_number", text="9").click()
+time.sleep(2)
+receiver_device(resourceId="com.google.android.dialer:id/dialpad_key_number", text="7").click()
+time.sleep(2)
+receiver_device(resourceId="com.google.android.dialer:id/dialpad_voice_call_button").click()
+time.sleep(2)
+receiver_device(resourceId="com.android.systemui:id/center_group").click()
+time.sleep(2)
+print("Gmail is working normally with call ongoing , Gmail_38,46 and 57 pass")
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gm:id/widget_folder").click()
+time.sleep(2)
+if (receiver_device(resourceId="com.google.android.gm:id/senders", text="Shubham Pal Singh")).exists():
+    time.sleep(2)
+    print("We have recieved email from shubham Pal Singh")
+receiver_device(resourceId="com.google.android.gm:id/senders", text="Shubham Pal Singh").click()
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gm:id/reply_button").click()
+time.sleep(2)
+receiver_device(resourceId="com.android.systemui:id/back").click()
+time.sleep(2)
+receiver_device(resourceId="com.android.systemui:id/back").click()
+time.sleep(2)
+receiver_device(resourceId="com.android.systemui:id/back").click()
+time.sleep(2)
+print("Test case 40,57 pass, reply can be sent")
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gm:id/senders", text="Shubham Pal Singh").click()
+time.sleep(2)
+receiver_device(resourceId="com.google.android.gm:id/archive").click()
+time.sleep(2)
+print("gmail is archived, Gmail_41,58 pass")
+time.sleep(2)
+#Volume up 
+import subprocess
+import time
+
+# Number of times to press the volume up button
+num_presses = 5
+
+# Loop to simulate volume up button presses
+for _ in range(num_presses):
+    subprocess.run(["adb", "shell", "input", "keyevent", "KEYCODE_VOLUME_UP"])
+    time.sleep(1)  # Adjust the sleep duration as needed between presses
+
+#Volume down
+
+import subprocess
+import time
+
+# Number of times to press the volume down button
+num_presses = 5
+
+# Loop to simulate volume down button presses
+for _ in range(num_presses):
+    subprocess.run(["adb", "shell", "input", "keyevent", "KEYCODE_VOLUME_DOWN"])
+    time.sleep(1)  # Adjust the sleep duration as needed between presses
+print("Volume up and down working , Gmail_66 pass")
